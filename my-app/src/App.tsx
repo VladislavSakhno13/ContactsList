@@ -2,20 +2,18 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Route, Routes, Link } from "react-router-dom";
+import { HomePage } from "./Pages/HomePage";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={<Second />} />
       </Routes>
     </>
   );
 }
-const Home = () => {
-  return <div>1</div>;
-};
 const Second = () => {
   return <div>2</div>;
 };
