@@ -3,10 +3,12 @@ import { makeStyles } from "@material-ui/styles";
 import { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import CheckIcon from "@mui/icons-material/Check";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { contactSlice } from "../store/redusers/ContactSlice";
 const useStyle = makeStyles((theme) => ({
-  root: { color: "red", "&:hover": { color: "blue" } },
+  root: { color: "#000", "&:hover": { color: "blue" } },
 }));
 interface TableLine {
   name?: string;
@@ -14,7 +16,6 @@ interface TableLine {
   index?: number;
 }
 export const TableLine = ({ name, phone, index }: TableLine) => {
-  console.log(index);
   const [openEdit, setOpenEdit] = useState<Boolean>(false);
   const dispatch = useAppDispatch();
   const { deleteById } = contactSlice.actions;
@@ -41,6 +42,20 @@ export const TableLine = ({ name, phone, index }: TableLine) => {
               id="outlined-basic"
               label="Contact Name"
               variant="outlined"
+            />
+          </TableCell>
+          <TableCell align="right">
+            <CheckIcon
+              fontSize="large"
+              className={classes.root}
+              onClick={openEditForm}
+            />
+          </TableCell>
+          <TableCell align="right">
+            <HighlightOffIcon
+              fontSize="large"
+              className={classes.root}
+              onClick={openEditForm}
             />
           </TableCell>
         </>
