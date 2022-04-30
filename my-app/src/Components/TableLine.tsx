@@ -8,7 +8,13 @@ import { contactSlice } from "../store/redusers/ContactSlice";
 const useStyle = makeStyles((theme) => ({
   root: { color: "red", "&:hover": { color: "blue" } },
 }));
-export const TableLine = (index: any) => {
+interface TableLine {
+  name?: string;
+  phone?: string;
+  index?: number;
+}
+export const TableLine = ({ name, phone, index }: TableLine) => {
+  console.log(index);
   const [openEdit, setOpenEdit] = useState<Boolean>(false);
   const dispatch = useAppDispatch();
   const { deleteById } = contactSlice.actions;
@@ -17,7 +23,7 @@ export const TableLine = (index: any) => {
     openEdit === false ? setOpenEdit(true) : setOpenEdit(false);
   };
   const classes = useStyle();
-  console.log(index);
+
   return (
     <>
       {openEdit == true ? (
@@ -41,9 +47,9 @@ export const TableLine = (index: any) => {
       ) : (
         <>
           <TableCell component="th" scope="row">
-            {index}
+            {name}
           </TableCell>
-          <TableCell align="right">{index}</TableCell>
+          <TableCell align="right">{phone}</TableCell>
           <TableCell align="right">
             <EditIcon className={classes.root} onClick={openEditForm} />
           </TableCell>

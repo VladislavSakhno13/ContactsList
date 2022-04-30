@@ -17,6 +17,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { IContact } from "../models/IContact";
 import { contactSlice } from "../store/redusers/ContactSlice";
 import { TableLine } from "./TableLine";
+import { IndexType } from "typescript";
 const useStyle = makeStyles((theme) => ({
   root: { color: "red", "&:hover": { color: "blue" } },
 }));
@@ -51,7 +52,7 @@ export const ContactsList = () => {
                 key={i}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableLine index={i} />
+                <TableLine name={data.Name} phone={data.Phone} index={i} />
               </TableRow>
             ))}
           </TableBody>
