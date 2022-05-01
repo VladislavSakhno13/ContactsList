@@ -15,6 +15,13 @@ export const contactSlice = createSlice({
     deleteById(state, action) {
       state.Contacts.splice(action.payload, 1);
     },
+    updateById(state, action) {
+      state.Contacts.splice(
+        action.payload.index,
+        1,
+        action.payload.contactData
+      );
+    },
   },
 });
 export default contactSlice.reducer;

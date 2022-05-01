@@ -10,30 +10,16 @@ import {
   TextField,
 } from "@mui/material";
 import { makeStyles } from "@material-ui/styles";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { IContact } from "../models/IContact";
-import { contactSlice } from "../store/redusers/ContactSlice";
+import { useAppSelector } from "../hooks/redux";
 import { TableLine } from "./TableLine";
-import { IndexType } from "typescript";
-const useStyle = makeStyles((theme) => ({
-  root: { color: "red", "&:hover": { color: "blue" } },
-}));
 export const ContactsList = () => {
-  const [openEdit, setOpenEdit] = useState<Boolean>(false);
   const [data, setData] = useState<any>([]);
   const { Contacts } = useAppSelector((state) => state.contactReducer);
-  const dispatch = useAppDispatch();
-  const { deleteById } = contactSlice.actions;
   useEffect(() => {
     setData(Contacts);
-  }, [Contacts]);
-  const openEditForm = () => {
-    openEdit === false ? setOpenEdit(true) : setOpenEdit(false);
-  };
-  const classes = useStyle();
+    console.log(Contacts);
+  }, [Contacts, data]);
   return (
     <Grid container style={{ marginTop: "30px" }}>
       <TableContainer component={Paper}>
@@ -52,7 +38,7 @@ export const ContactsList = () => {
                 key={i}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableLine name={data.Name} phone={data.Phone} index={i} />
+                <TableLine name={data.name} phone={data.phone} index={i} />
               </TableRow>
             ))}
           </TableBody>

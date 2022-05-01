@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "login": "login",
+      "password": "password"
+    },
+    {
+      "id": 1,
+      "login": "UserName",
+      "password": "1234567890"
+    },
+    {
+      "id": 2,
+      "login": "firstName",
+      "password": "password"
+    },
+    {
+      "id": 3,
+      "login": "MoneyMaker",
+      "password": "qwerty"
+    },
+    {
+      "id": 4,
+      "login": "qwerty",
+      "password": "qwerty"
+    }
+  ]
+}
