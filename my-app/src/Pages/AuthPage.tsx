@@ -30,7 +30,6 @@ export const AuthPage = () => {
       .then((response) => {
         response.data.forEach((element: User) => {
           if (element.login === login && element.password === password) {
-            console.log(element);
             dispatch(authUser(element));
             window.localStorage.setItem("userData", element.id.toString());
             return;

@@ -13,6 +13,11 @@ function App() {
   const localdata = localStorage.getItem("userData");
   const dispatch = useAppDispatch();
   const { authUser } = userAuthSlice.actions;
+  interface user {
+    id: number | undefined;
+    name: string;
+    phone: string;
+  }
   useEffect(() => {
     if (localdata !== null) {
       let userId = parseInt(localdata);
@@ -21,10 +26,20 @@ function App() {
           "https://my-json-server.typicode.com/VladislavSakhno13/json-server/users"
         )
         .then((response) => {
+          response.data.forEach((element: user) => {
+            if (element.id === userId) {
+              dispatch(authUser(element));
+            }
+          });
           const userData = response.data.filter(
-            (user: any) => user.id === userId
+            (user: user) => user.id === userId
           );
-          dispatch(authUser(userData));
+          const newArr = {
+            id: 1,
+            name: "",
+            phone: "",
+          };
+          console.log(userData);
         })
         .catch((response) => {
           console.error(response);
@@ -34,7 +49,7 @@ function App() {
 
   return (
     <>
-      {id === null ? (
+      {id === null || id === undefined ? (
         <AuthPage />
       ) : (
         <Routes>

@@ -11,9 +11,15 @@ export const userAuthSlice = createSlice({
   initialState,
   reducers: {
     authUser(state, action) {
+      console.log("action - ", action.payload);
       state.id = action.payload.id;
       state.login = action.payload.login;
       state.password = action.payload.password;
+    },
+    logout(state) {
+      state.id = null;
+      state.login = "";
+      state.password = "";
     },
   },
 });

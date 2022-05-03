@@ -1,8 +1,8 @@
 import { Button, Grid, TextField } from "@mui/material";
 import { ChangeEvent, useState } from "react";
-import { contactSlice } from "../store/redusers/ContactSlice";
+import { contactSlice } from "../../store/redusers/ContactSlice";
 import MuiPhoneNumber from "material-ui-phone-number";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 export const AddContactForm = () => {
   const dispatch = useAppDispatch();
   const { addContact } = contactSlice.actions;
