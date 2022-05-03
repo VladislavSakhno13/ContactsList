@@ -19,7 +19,7 @@ export const TopBar = () => {
             sx={{ flexGrow: 1 }}
           ></Typography>
           <Button color="inherit" onClick={LogOut}>
-            Login
+            Logout
           </Button>
         </Toolbar>
       </AppBar>
